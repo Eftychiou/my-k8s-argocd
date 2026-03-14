@@ -1,19 +1,11 @@
 namespace: george-app
 
 backend:
-  replicas: 1
-  image: hashicorp/http-echo
-  tag: latest
-  args:
-    - "-text=Hello from backend API OF GEORGE TEST 2"
   service:
     port: 80
     targetPort: 5678
 
 frontend:
-  replicas: 1
-  image: eftichiou/george-ui
-  tag: 4
   service:
     port: 80
     targetPort: 80
