@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: george-virtualservice
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.istio.namespace }}
 spec:
   hosts:
     - "{{ .Values.istio.host }}"
@@ -22,6 +22,6 @@ spec:
             prefix: /
       route:
         - destination:
-            host: ui.{{ .Values.namespace }}.svc.cluster.local
+            host: frontend.{{ .Values.namespace }}.svc.cluster.local
             port:
-              number: {{ .Values.ui.service.port }}
+              number: {{ .Values.frontend.service.port }}
