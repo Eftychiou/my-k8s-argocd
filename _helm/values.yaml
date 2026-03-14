@@ -13,7 +13,7 @@ backend:
 frontend:
   replicas: 1
   image: eftichiou/george-ui
-  tag: 2
+  tag: 4
   service:
     port: 80
     targetPort: 80
