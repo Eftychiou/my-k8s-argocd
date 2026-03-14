@@ -5,7 +5,7 @@ metadata:
   name: root-app
   namespace: argocd
 spec:
-  project: default
+  project: my-k8s-argocd
   source:
     repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
     path: applications

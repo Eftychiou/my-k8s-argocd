@@ -6,3 +6,4 @@ tag: 3
 
 service:
   port: 80
+  targetPort: 80
