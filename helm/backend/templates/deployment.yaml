@@ -19,4 +19,5 @@ spec:
           ports:
             - containerPort: {{ .Values.service.targetPort }}
           args: {{- toYaml .Values.args | nindent 12 }}
-          env: {{- if .Values.env }}{{ toYaml .Values.env | nindent 12 }}{{ else }}[]{{ end }}
+          env: {{- toYaml (.Values.env | default list) | nindent 12 }}
+
