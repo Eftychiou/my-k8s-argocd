@@ -10,4 +10,4 @@ service:
   port: 80
   targetPort: 5678
 
-env: {}
+env: []
