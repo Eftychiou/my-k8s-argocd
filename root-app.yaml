@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
-    path: apps
+    path: applications
     targetRevision: HEAD
     directory:
       recurse: true

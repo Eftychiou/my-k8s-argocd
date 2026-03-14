@@ -6,8 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/my-k8s  # set your git repo URL
-    path: helm/frontend
+    repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc

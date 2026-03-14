@@ -1,9 +1,0 @@
-namespace: george-app
-host: george.com
-gatewaySelector: ingressgateway
-
-backend:
-  servicePort: 80
-
-frontend:
-  servicePort: 80

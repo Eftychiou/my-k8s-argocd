@@ -4,8 +4,7 @@ Since you're running K3s + Helm + ArgoCD, a clean structure is:
 
 ├── applications
 │   ├── frontend.yaml
-│   ├── backend.yaml│   
-│   └── istio-gateway.yaml
+│   └── backend.yaml
 │
 ├── helm
 │   ├── frontend
@@ -16,9 +15,8 @@ Since you're running K3s + Helm + ArgoCD, a clean structure is:
 │       ├── Chart.yaml
 │       ├── values.yaml
 │       └── templates/
-│
-└── infrastructure
-    ├── istio-gateway        # Gateway + VirtualService for routing 
+
+
 
 Each application.yaml defines one ArgoCD Application. Set repoURL in each to your git repo.
 

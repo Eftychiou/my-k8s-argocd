@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/my-k8s  # set your git repo URL
+    repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
     path: helm/backend
     targetRevision: HEAD
   destination:
