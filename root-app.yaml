@@ -1,21 +1,23 @@
-# App of Apps: install this one Application; ArgoCD creates the rest from apps/
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root-app
-  namespace: argocd
+  name: my-k8s-argocd-root
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: my-k8s-argocd
-  source:
-    repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
-    path: applications
-    targetRevision: HEAD
-    directory:
-      recurse: true
   destination:
+    namespace: argocd # Can be empty
     server: https://kubernetes.default.svc
-    namespace: argocd
+  source:
+    path: applications
+    repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
+    targetRevision: HEAD
+  sources: []
+  project: my-k8s
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
+      prune: false
+      selfHeal: false
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
