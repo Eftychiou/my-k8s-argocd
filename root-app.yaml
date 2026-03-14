@@ -1,0 +1,21 @@
+# App of Apps: install this one Application; ArgoCD creates the rest from apps/
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-org/my-k8s  # set your git repo URL
+    path: apps
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

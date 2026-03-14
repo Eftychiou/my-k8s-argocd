@@ -1,0 +1,13 @@
+namespace: george-app
+
+replicas: 1
+image: hashicorp/http-echo
+tag: latest
+args:
+  - "-text=Hello from backend API OF GEORGE"
+
+service:
+  port: 80
+  targetPort: 5678
+
+env: {}

@@ -1,0 +1,8 @@
+namespace: george-app
+
+replicas: 1
+image: eftichiou/george-ui
+tag: latest
+
+service:
+  port: 80

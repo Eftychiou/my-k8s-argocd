@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: george-virtualservice
+  namespace: {{ .Values.namespace }}
+spec:
+  hosts:
+    - "{{ .Values.host }}"
+  gateways:
+    - george-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /api
+      route:
+        - destination:
+            host: backend.{{ .Values.namespace }}.svc.cluster.local
+            port:
+              number: {{ .Values.backend.servicePort }}
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: frontend.{{ .Values.namespace }}.svc.cluster.local
+            port:
+              number: {{ .Values.frontend.servicePort }}

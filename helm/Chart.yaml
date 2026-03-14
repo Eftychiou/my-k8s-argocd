@@ -1,0 +1,6 @@
+apiVersion: v2
+name: george-app
+description: George App with UI, Backend and Istio routing
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
