@@ -10,8 +10,10 @@ frontend:
     port: 80
     targetPort: 80
 
-
 istio:
   namespace: istio-system
   host: george.com
   gatewaySelector: ingressgateway
+  port: 80
+  portName: http
+  protocol: HTTP

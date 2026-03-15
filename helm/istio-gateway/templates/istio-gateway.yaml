@@ -8,8 +8,8 @@ spec:
     istio: {{ .Values.istio.gatewaySelector }}
   servers:
     - port:
-        number: 80
-        name: http
-        protocol: HTTP
+        number: {{ .Values.istio.port }}
+        name: {{ .Values.istio.portName }}
+        protocol: {{ .Values.istio.protocol }}
       hosts:
         - "{{ .Values.istio.host }}"

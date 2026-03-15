@@ -4,7 +4,8 @@ Generated: 2025-03-15
 .
 ├── applications/
 │   ├── backend.yaml
-│   └── frontend.yaml
+│   ├── frontend.yaml
+│   └── istio-gateway.yaml
 ├── helm/
 │   ├── backend/
 │   │   ├── templates/
@@ -12,18 +13,20 @@ Generated: 2025-03-15
 │   │   │   └── service.yaml
 │   │   ├── Chart.yaml
 │   │   └── values.yaml
-│   └── frontend/
+│   ├── frontend/
+│   │   ├── templates/
+│   │   │   ├── deployment.yaml
+│   │   │   └── service.yaml
+│   │   ├── Chart.yaml
+│   │   └── values.yaml
+│   └── istio-gateway/
 │       ├── templates/
-│       │   ├── deployment.yaml
-│       │   └── service.yaml
+│       │   ├── istio-gateway.yaml
+│       │   └── istio-virtualservice.yaml
 │       ├── Chart.yaml
 │       └── values.yaml
-├── _helm/
-│   ├── templates/
-│   │   ├── istio-gateway.yaml
-│   │   └── istio-virtualservice.yaml│   │   
-│   ├── Chart.yaml
-│   └── values.yaml
+├── COMMANDS.md
+├── directory-structure.txt
 └── root-app.yaml
 
 Note: .git directory excluded from listing.
