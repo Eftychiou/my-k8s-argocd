@@ -8,13 +8,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/istio/istio.git
-    targetRevision: 1.20.0
-    path: manifests/charts/istio-control
+    path: helm/istiod   # <--- now points to local chart
+    repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
+    targetRevision: HEAD
     helm:
-      values: |
-        global:
-          istioNamespace: istio-system
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system
