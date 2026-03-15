@@ -2,7 +2,7 @@ namespace: george-app
 
 replicas: 1
 image: eftichiou/george-ui
-tag: 4
+tag: 5
 
 service:
   port: 80
