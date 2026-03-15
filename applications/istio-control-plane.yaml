@@ -1,18 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio-gateway
+  name: istio-control-plane
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
-    repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
-    path: helm/istio-gateway
-    targetRevision: HEAD
+    repoURL: https://github.com/istio/istio.git
+    targetRevision: 1.20.0
+    path: manifests/charts/istio-control
+    helm:
+      values: |
+        global:
+          istioNamespace: istio-system
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system
@@ -20,5 +22,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
