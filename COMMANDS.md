@@ -151,6 +151,13 @@ helm uninstall backend -n george-app
 k get applications -A
 ```
 
+### Get all Resources
+
+```bash
+k get all
+```
+
+
 Shows Application custom resources managed by ArgoCD.
 
 ---
