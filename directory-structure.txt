@@ -5,28 +5,98 @@ Generated: 2025-03-15
 ├── applications/
 │   ├── backend.yaml
 │   ├── frontend.yaml
-│   └── istio-gateway.yaml
+│   ├── istio-control-plane.yaml
+│   ├── istio-gateway.yaml
+│   └── istio-ingressgateway.yaml
 ├── helm/
-│   ├── backend/
+│   ├── gateway/
+│   │   ├── files/
+│   │   │   ├── profile-ambient.yaml
+│   │   │   ├── profile-demo.yaml
+│   │   │   ├── profile-preview.yaml
+│   │   │   ├── profile-remote.yaml
+│   │   │   ├── profile-stable.yaml
+│   │   │   ├── profile-compatibility-version-1.25.yaml
+│   │   │   ├── profile-compatibility-version-1.26.yaml
+│   │   │   ├── profile-compatibility-version-1.27.yaml
+│   │   │   ├── profile-compatibility-version-1.28.yaml
+│   │   │   ├── profile-platform-gke.yaml
+│   │   │   ├── profile-platform-k3d.yaml
+│   │   │   ├── profile-platform-k3s.yaml
+│   │   │   ├── profile-platform-microk8s.yaml
+│   │   │   ├── profile-platform-minikube.yaml
+│   │   │   └── profile-platform-openshift.yaml
 │   │   ├── templates/
+│   │   │   ├── _helpers.tpl
 │   │   │   ├── deployment.yaml
-│   │   │   └── service.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── NOTES.txt
+│   │   │   ├── poddisruptionbudget.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── zzz_profile.yaml
 │   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── values.schema.json
 │   │   └── values.yaml
-│   ├── frontend/
-│   │   ├── templates/
-│   │   │   ├── deployment.yaml
-│   │   │   └── service.yaml
-│   │   ├── Chart.yaml
-│   │   └── values.yaml
-│   └── istio-gateway/
+│   └── istiod/
+│       ├── files/
+│       │   ├── agentgateway.yaml
+│       │   ├── gateway-injection-template.yaml
+│       │   ├── grpc-agent.yaml
+│       │   ├── grpc-simple.yaml
+│       │   ├── injection-template.yaml
+│       │   ├── kube-gateway.yaml
+│       │   ├── waypoint.yaml
+│       │   ├── profile-ambient.yaml
+│       │   ├── profile-demo.yaml
+│       │   ├── profile-preview.yaml
+│       │   ├── profile-remote.yaml
+│       │   ├── profile-stable.yaml
+│       │   ├── profile-compatibility-version-1.25.yaml
+│       │   ├── profile-compatibility-version-1.26.yaml
+│       │   ├── profile-compatibility-version-1.27.yaml
+│       │   ├── profile-compatibility-version-1.28.yaml
+│       │   ├── profile-platform-gke.yaml
+│       │   ├── profile-platform-k3d.yaml
+│       │   ├── profile-platform-k3s.yaml
+│       │   ├── profile-platform-microk8s.yaml
+│       │   ├── profile-platform-minikube.yaml
+│       │   └── profile-platform-openshift.yaml
 │       ├── templates/
-│       │   ├── istio-gateway.yaml
-│       │   └── istio-virtualservice.yaml
+│       │   ├── _helpers.tpl
+│       │   ├── autoscale.yaml
+│       │   ├── clusterrole.yaml
+│       │   ├── clusterrolebinding.yaml
+│       │   ├── configmap.yaml
+│       │   ├── configmap-jwks.yaml
+│       │   ├── configmap-values.yaml
+│       │   ├── deployment.yaml
+│       │   ├── gateway-class-configmap.yaml
+│       │   ├── istiod-injector-configmap.yaml
+│       │   ├── mutatingwebhook.yaml
+│       │   ├── networkpolicy.yaml
+│       │   ├── NOTES.txt
+│       │   ├── poddisruptionbudget.yaml
+│       │   ├── reader-clusterrole.yaml
+│       │   ├── reader-clusterrolebinding.yaml
+│       │   ├── remote-istiod-endpointslices.yaml
+│       │   ├── remote-istiod-service.yaml
+│       │   ├── revision-tags-mwc.yaml
+│       │   ├── revision-tags-svc.yaml
+│       │   ├── role.yaml
+│       │   ├── rolebinding.yaml
+│       │   ├── service.yaml
+│       │   ├── serviceaccount.yaml
+│       │   ├── validatingadmissionpolicy.yaml
+│       │   ├── validatingwebhookconfiguration.yaml
+│       │   ├── zzy_descope_legacy.yaml
+│       │   └── zzz_profile.yaml
 │       ├── Chart.yaml
+│       ├── README.md
 │       └── values.yaml
-├── COMMANDS.md
-├── directory-structure.txt
 └── root-app.yaml
 
-Note: .git directory excluded from listing.
+Note: .git excluded. COMMANDS.md, delete-namespaces.sh, and directory-structure.txt excluded from listing.
