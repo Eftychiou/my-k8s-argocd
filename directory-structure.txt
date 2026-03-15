@@ -1,0 +1,29 @@
+Directory structure of my-k8s-argocd
+Generated: 2025-03-15
+
+.
+├── applications/
+│   ├── backend.yaml
+│   └── frontend.yaml
+├── helm/
+│   ├── backend/
+│   │   ├── templates/
+│   │   │   ├── deployment.yaml
+│   │   │   └── service.yaml
+│   │   ├── Chart.yaml
+│   │   └── values.yaml
+│   └── frontend/
+│       ├── templates/
+│       │   ├── deployment.yaml
+│       │   └── service.yaml
+│       ├── Chart.yaml
+│       └── values.yaml
+├── _helm/
+│   ├── templates/
+│   │   ├── istio-gateway.yaml
+│   │   └── istio-virtualservice.yaml│   │   
+│   ├── Chart.yaml
+│   └── values.yaml
+└── root-app.yaml
+
+Note: .git directory excluded from listing.
