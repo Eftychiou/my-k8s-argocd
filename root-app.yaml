@@ -11,13 +11,12 @@ spec:
   source:
     path: applications
     repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
-    targetRevision: HEAD
-  sources: []
-  project: my-k8s
+    targetRevision: HEAD  
+  project: default
   syncPolicy:
     automated:
-      prune: false
-      selfHeal: false
+      prune: true
+      selfHeal: true
       enabled: true
     syncOptions:
       - CreateNamespace=true
