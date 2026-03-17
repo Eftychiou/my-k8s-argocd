@@ -7,15 +7,33 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Eftychiou/my-k8s-argocd.git   # points to your Git repo
-    path: bootstrap/argocd
+    repoURL: https://argoproj.github.io/argo-helm
     chart: argo-cd
-    targetRevision: 5.51.6   # pin version!
-    
-
+    targetRevision: 5.51.6
     helm:
-      valueFiles:
-        - values.yaml
+      values: |
+        configs:
+          params:
+            server.insecure: true
+
+        server:
+          service:
+            type: ClusterIP
+
+        controller:
+          replicas: 1
+
+        repoServer:
+          replicas: 1
+
+        applicationSet:
+          enabled: true
+
+        dex:
+          enabled: false
+
+        redis:
+          enabled: true
 
   destination:
     server: https://kubernetes.default.svc

@@ -10,9 +10,8 @@ Generated: 2026-03-17
 │   └── istio-ingressgateway.yaml
 ├── bootstrap/
 │   └── argocd/
-│       ├── argocd.yaml
-│       └── values/
-│           └── argocd-values.yaml
+│       └── argocd.yaml
+│       └── values/│           
 ├── helm/
 │   ├── backend/
 │   │   ├── Chart.yaml
