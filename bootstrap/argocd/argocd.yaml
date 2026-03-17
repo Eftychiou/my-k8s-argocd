@@ -10,7 +10,7 @@ spec:
     repoURL: https://argoproj.github.io/argo-helm
     chart: argo-cd
     targetRevision: 5.51.6   # pin version!
-    # path: argocd
+    path: bootstrap/argocd
 
     helm:
       valueFiles:

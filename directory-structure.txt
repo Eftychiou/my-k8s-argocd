@@ -8,12 +8,11 @@ Generated: 2026-03-17
 │   ├── istio-control-plane.yaml
 │   ├── istio-gateway.yaml
 │   └── istio-ingressgateway.yaml
-├── argocd/
-│   ├── root-app.yaml
-│   └── values/
-│       └── argocd-values.yaml
 ├── bootstrap/
-│   └── argocd.yaml
+│   └── argocd/
+│       ├── argocd.yaml
+│       └── values/
+│           └── argocd-values.yaml
 ├── helm/
 │   ├── backend/
 │   │   ├── Chart.yaml
@@ -115,5 +114,6 @@ Generated: 2026-03-17
 │       ├── Chart.yaml
 │       ├── README.md
 │       └── values.yaml
+└── root-app.yaml
 
 Note: .git excluded. COMMANDS.md, delete-namespaces.sh, and directory-structure.txt excluded from listing.
