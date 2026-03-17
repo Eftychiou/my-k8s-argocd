@@ -7,14 +7,15 @@ spec:
   project: default
 
   source:
-    repoURL: https://argoproj.github.io/argo-helm
+    repoURL: https://github.com/Eftychiou/my-k8s-argocd.git   # points to your Git repo
+    path: bootstrap/argocd
     chart: argo-cd
     targetRevision: 5.51.6   # pin version!
-    path: bootstrap/argocd
+    
 
     helm:
       valueFiles:
-        - https://raw.githubusercontent.com/Eftychiou/my-k8s-argocd/HEAD/bootstrap/argocd/values/argocd-values.yaml
+        - values.yaml
 
   destination:
     server: https://kubernetes.default.svc
