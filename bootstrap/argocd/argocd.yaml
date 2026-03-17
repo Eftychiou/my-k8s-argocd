@@ -14,7 +14,7 @@ spec:
 
     helm:
       valueFiles:
-        - values/argocd-values.yaml
+        - https://raw.githubusercontent.com/Eftychiou/my-k8s-argocd/HEAD/bootstrap/argocd/values/argocd-values.yaml
 
   destination:
     server: https://kubernetes.default.svc
