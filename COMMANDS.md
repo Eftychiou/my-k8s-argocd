@@ -178,3 +178,45 @@ virtualservice.networking.istio.io/george-virtualservice   ["george-gateway"]   
 ```
 
 Confirms that `george.com` is routed via `george-gateway` and `george-virtualservice`.
+
+## Helm
+
+### List relesases
+```bash
+helm list -n argocd 
+```
+
+### List repos
+```bash
+helm repo list
+```
+
+### Delete Release
+```bash
+helm uninstall traefik-crd -n kube-system
+```
+
+# Delete finalizers
+```bash
+for app in $(kubectl get applications -n argocd -o jsonpath='{.items[*].metadata.name}'); do
+  kubectl patch application $app -n argocd -p '{"metadata":{"finalizers":[]}}' --type=merge
+done
+```
+
+
+
+## Install argo-cd
+
+```bash
+helm repo add argo https://argoproj.github.io/argo-helm
+helm repo update
+helm upgrade --install argocd argo/argo-cd -n argocd --create-namespace --skip-crds
+kubectl apply -f bootstrap/argocd.yaml
+kubectl apply -f argocd/root-app.yaml
+
+kubectl port-forward service/argocd-server -n argocd 8081:443
+http://localhost:8081 
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+example  admin DE4ysVMN-sEXA581
+
+```
