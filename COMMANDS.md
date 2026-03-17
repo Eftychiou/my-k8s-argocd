@@ -63,40 +63,6 @@ Decodes and prints the initial admin password.
 
 ---
 
-## Helm: install/upgrade application
-### Not monorepo
-```bash
-helm upgrade --install backend ./helm/backend --namespace george-app --create-namespace
-helm upgrade --install frontend ./helm/frontend --namespace george-app --create-namespace
-```
-
-From repo root.
-
-### Install or upgrade `george-app` (with namespace creation)
-
-```bash
-helm upgrade --install george-app ./helm -n george-app --create-namespace -f helm/values.yaml
-```
-
-### Install or upgrade `george-app` (namespace must exist)
-
-```bash
-helm upgrade --install george-app ./helm -n george-app -f helm/values.yaml
-```
-
-### Install/upgrade shared Helm chart as `istio-system` in `george-app` namespace
-
-```bash
-helm upgrade --install istio-system ./_helm --namespace george-app --create-namespace
-```
-
-### Install/upgrade shared Helm chart as `george-app` in `istio-system` namespace
-
-```bash
-helm upgrade --install george-app ./_helm --namespace istio-system
-```
-
----
 
 ## General kubectl commands
 
@@ -134,13 +100,6 @@ k rollout restart deployment -n istio-system
 kubectl rollout restart deployment -n argocd
 ```
 
-### Delete release in namespace with helm
-
-```bash
-helm uninstall frontend -n george-app
-helm uninstall backend -n george-app
-```
-
 ---
 
 ## ArgoCD applications
@@ -149,6 +108,10 @@ helm uninstall backend -n george-app
 
 ```bash
 k get applications -A
+```
+### Delete ArgoCD application
+```bash
+kubectl delete application my-k8s-argocd-root
 ```
 
 ### Get all Resources
@@ -179,7 +142,41 @@ virtualservice.networking.istio.io/george-virtualservice   ["george-gateway"]   
 
 Confirms that `george.com` is routed via `george-gateway` and `george-virtualservice`.
 
-## Helm
+# Helm
+
+### Not monorepo
+```bash
+helm upgrade --install backend ./helm/backend --namespace george-app --create-namespace
+helm upgrade --install frontend ./helm/frontend --namespace george-app --create-namespace
+```
+
+From repo root.
+
+### Install or upgrade `george-app` (with namespace creation)
+
+```bash
+helm upgrade --install george-app ./helm -n george-app --create-namespace -f helm/values.yaml
+```
+
+### Install or upgrade `george-app` (namespace must exist)
+
+```bash
+helm upgrade --install george-app ./helm -n george-app -f helm/values.yaml
+```
+
+### Install/upgrade shared Helm chart as `istio-system` in `george-app` namespace
+
+```bash
+helm upgrade --install istio-system ./_helm --namespace george-app --create-namespace
+```
+
+### Install/upgrade shared Helm chart as `george-app` in `istio-system` namespace
+
+```bash
+helm upgrade --install george-app ./_helm --namespace istio-system
+```
+
+
 
 ### List relesases
 ```bash

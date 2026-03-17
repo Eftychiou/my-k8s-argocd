@@ -10,10 +10,11 @@ spec:
     repoURL: https://argoproj.github.io/argo-helm
     chart: argo-cd
     targetRevision: 5.51.6   # pin version!
+    path: argocd
 
     helm:
       valueFiles:
-        - $values/argocd/values/argocd-values.yaml
+        - values/argocd-values.yaml
 
   destination:
     server: https://kubernetes.default.svc
