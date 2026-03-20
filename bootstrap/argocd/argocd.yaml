@@ -19,6 +19,8 @@ spec:
         server:
           service:
             type: ClusterIP
+          extraArgs:
+            - --insecure
 
         controller:
           replicas: 1
