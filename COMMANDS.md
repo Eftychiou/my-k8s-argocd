@@ -204,11 +204,12 @@ done
 
 ## Install argo-cd
 
+Bootstrap once with Helm, then let the root `Application` sync everything under `applications/`, including self-management of Argo CD via `applications/argocd.yaml`. That manifest pins the **argo-helm chart version** (e.g. `9.4.11` — run `helm list -n argocd` and set `targetRevision` to match) and uses `skipCrds: true` to mirror `--skip-crds`. Customize Argo CD by editing that file (add a `helm.values` block) instead of ad-hoc `helm upgrade`.
+
 ```bash
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 helm upgrade --install argocd argo/argo-cd -n argocd --create-namespace --skip-crds
-kubectl apply -f bootstrap/argocd.yaml
 kubectl apply -f bootstrap/root-app.yaml
 
 kubectl port-forward service/argocd-server -n argocd 8081:443
