@@ -208,15 +208,18 @@ done
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 helm upgrade --install argocd argo/argo-cd -n argocd --create-namespace --skip-crds
-kubectl apply -f bootstrap/argocd/argocd.yaml
-kubectl apply -f root-app.yaml
+kubectl apply -f bootstrap/argocd.yaml
+kubectl apply -f bootstrap/root-app.yaml
 
 kubectl port-forward service/argocd-server -n argocd 8081:443
+k port-forward -n istio-system svc/istio-ingressgateway 8080:80
 http://localhost:8081 
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-example  admin IDen9VdM4G3C7zHa
+example  admin GH7fQLCrP2O8I98o
 
 ```
 
+Being on a worker/master node you can get inside the cluster in a debug mode
+kubectl run debug --rm -it --image=nicolaka/netshoot -- bash
+curl http://frontend.george-app.svc.cluster.local
 
-kubectl get applications -n argocd -o name | xargs -I {} kubectl patch {} -n argocd -p '{"metadata":{"finalizers":[]}}' --type=merge
