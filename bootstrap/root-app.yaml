@@ -12,7 +12,9 @@ spec:
   source:
     path: applications
     repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
-    targetRevision: HEAD  
+    targetRevision: HEAD
+    directory:
+      exclude: "_*.yaml"
   project: default
   syncPolicy:
     automated:
