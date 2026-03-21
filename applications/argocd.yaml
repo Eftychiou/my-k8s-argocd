@@ -25,3 +25,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      # CRD manifests exceed the ~256Ki limit for kubectl's last-applied-configuration
+      # annotation when using client-side apply; SSA avoids that and fixes SyncFailed on CRDs.
+      - ServerSideApply=true
