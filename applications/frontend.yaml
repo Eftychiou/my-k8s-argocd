@@ -10,8 +10,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Eftychiou/my-k8s-argocd.git
-    path: helm/frontend
+    repoURL: https://github.com/Eftychiou/my-k8s-ui.git
+    path: helm
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
