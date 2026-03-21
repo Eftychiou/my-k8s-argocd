@@ -12,7 +12,7 @@ frontend:
 
 # Mirrors helm/istio-gateway/values.yaml: istio.* → edge.* (Traefik entrypoint instead of gateway/portName)
 edge:
-  namespace: traefik
+  namespace: george-app
   host: george.com
   entryPoint: web
   port: 80

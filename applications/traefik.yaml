@@ -15,7 +15,7 @@ spec:
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: traefik
+    namespace: george-app
   syncPolicy:
     automated:
       prune: true

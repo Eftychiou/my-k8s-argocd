@@ -213,7 +213,7 @@ helm upgrade --install argocd argo/argo-cd -n argocd --create-namespace --skip-c
 k apply -f bootstrap/root-app.yaml
 k port-forward service/argocd-server -n argocd 8081:443
 k port-forward -n istio-system svc/istio-ingressgateway 8080:80
-k port-forward -n traefik svc/traefik 8080:80
+k port-forward -n george-app svc/traefik 8080:80
 k -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 example  admin DwbYXQjTZ0c41wqu
 ```
