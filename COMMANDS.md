@@ -210,18 +210,16 @@ Bootstrap once with Helm, then let the root `Application` sync everything under 
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 helm upgrade --install argocd argo/argo-cd -n argocd --create-namespace --skip-crds
-kubectl apply -f bootstrap/root-app.yaml
-
-kubectl port-forward service/argocd-server -n argocd 8081:443
+k apply -f bootstrap/root-app.yaml
+k port-forward service/argocd-server -n argocd 8081:443
 k port-forward -n istio-system svc/istio-ingressgateway 8080:80
-
-http://localhost:8081 
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 example  admin 0Mdcbk7rNE4rFre2
-
 ```
 
-Being on a worker/master node you can get inside the cluster in a debug mode
+## Being on a worker/master node you can get inside the cluster in a debug mode
+```bash
 kubectl run debug --rm -it --image=nicolaka/netshoot -- bash
 curl http://frontend.george-app.svc.cluster.local
+```
 

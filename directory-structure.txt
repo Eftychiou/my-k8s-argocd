@@ -1,17 +1,16 @@
 Directory structure of my-k8s-argocd
-Generated: 2026-03-17
+Generated: 2026-03-21
 
 .
 ├── applications/
+│   ├── argocd.yaml
 │   ├── backend.yaml
 │   ├── frontend.yaml
 │   ├── istio-control-plane.yaml
 │   ├── istio-gateway.yaml
 │   └── istio-ingressgateway.yaml
 ├── bootstrap/
-│   └── argocd/
-│       └── argocd.yaml
-│       └── values/│           
+│   └── root-app.yaml
 ├── helm/
 │   ├── backend/
 │   │   ├── Chart.yaml
@@ -56,6 +55,12 @@ Generated: 2026-03-17
 │   │   ├── Chart.yaml
 │   │   ├── README.md
 │   │   ├── values.schema.json
+│   │   └── values.yaml
+│   ├── istio-gateway/
+│   │   ├── Chart.yaml
+│   │   ├── templates/
+│   │   │   ├── istio-gateway.yaml
+│   │   │   └── istio-virtualservice.yaml
 │   │   └── values.yaml
 │   └── istiod/
 │       ├── files/
@@ -113,6 +118,5 @@ Generated: 2026-03-17
 │       ├── Chart.yaml
 │       ├── README.md
 │       └── values.yaml
-└── root-app.yaml
 
-Note: .git excluded. COMMANDS.md, delete-namespaces.sh, and directory-structure.txt excluded from listing.
+Note: .git excluded. COMMANDS.md and directory-structure.txt excluded from listing.

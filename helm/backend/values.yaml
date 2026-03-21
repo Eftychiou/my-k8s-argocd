@@ -4,7 +4,7 @@ replicas: 1
 image: hashicorp/http-echo
 tag: latest
 args:
-  - "-text=Hello from backend API OF GEORGE TEST 7"
+  - "-text=Hello from backend API OF GEORGE TEST 8"
 
 service:
   port: 80
