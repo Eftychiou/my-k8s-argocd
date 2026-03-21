@@ -18,6 +18,21 @@ edge:
   port: 80
   protocol: HTTP
 
+# Catch-all when Host is missing or not george.com (IP access, wrong hostname).
+fallback:
+  enabled: true
+  html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>No matching host</title>
+    </head>
+    <body>
+      <p>No hostname matched this ingress. Use <strong>george.com</strong> or send a matching <code>Host</code> header.</p>
+    </body>
+    </html>
+
 traefik:
   ingressClass:
     enabled: true
