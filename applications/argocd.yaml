@@ -17,11 +17,18 @@ spec:
     helm:
       skipCrds: true
       # Change ui.bannercontent and push → sync → banner text updates (quick GitOps check).
+      #
+      # Anonymous UI: no login prompt. ONLY for isolated lab / port-forward — anyone who can
+      # reach the UI has full Argo CD admin. Remove accounts.anonymous + rbac lines for real clusters.
       values: |
         configs:
           cm:
             ui.bannercontent: "Values from Git — edit me in applications/argocd.yaml"
             ui.bannerpermanent: "true"
+            accounts.anonymous.enabled: "true"
+          rbac:
+            policy.csv: |
+              g, anonymous, role:admin
 
   destination:
     server: https://kubernetes.default.svc
