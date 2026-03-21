@@ -41,7 +41,10 @@ _internal_defaults_do_not_set:
 
   service:
     # Type of service. Set to "None" to disable the service entirely
-    type: LoadBalancer
+    # LoadBalancer without a cloud LB / MetalLB leaves EXTERNAL-IP pending; Argo CD then
+    # reports the app Health as Progressing forever. Use ClusterIP if you access via
+    # kubectl port-forward (see COMMANDS.md), or NodePort / LoadBalancer when you have a real LB.
+    type: ClusterIP
     # Set to a specific ClusterIP, or "" for automatic assignment
     clusterIP: ""
     # Additional labels to add to the service selector
