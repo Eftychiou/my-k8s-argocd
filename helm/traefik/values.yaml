@@ -28,8 +28,10 @@ traefik:
         default: true
       exposedPort: 80
       protocol: TCP
+  # NodePort for local k3s/kind; use LoadBalancer when EXTERNAL-IP is provisioned (cloud/MetalLB).
   service:
-    type: LoadBalancer
+    type: NodePort
+    # type: LoadBalancer # Needs METALLB
   providers:
     kubernetesIngress:
       enabled: true

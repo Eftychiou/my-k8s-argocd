@@ -180,7 +180,7 @@ helm upgrade --install george-app ./_helm --namespace istio-system
 
 ### List relesases
 ```bash
-helm list -n argocd 
+helm list -A
 ```
 
 ### List repos
@@ -193,7 +193,7 @@ helm repo list
 helm uninstall traefik-crd -n kube-system
 ```
 
-# Delete finalizers
+## Delete finalizers
 ```bash
 for app in $(kubectl get applications -n argocd -o jsonpath='{.items[*].metadata.name}'); do
   kubectl patch application $app -n argocd -p '{"metadata":{"finalizers":[]}}' --type=merge
@@ -215,7 +215,7 @@ k port-forward service/argocd-server -n argocd 8081:443
 k port-forward -n istio-system svc/istio-ingressgateway 8080:80
 k port-forward -n traefik svc/traefik 8080:80
 k -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-example  admin 0Mdcbk7rNE4rFre2
+example  admin DwbYXQjTZ0c41wqu
 ```
 
 ## Being on a worker/master node you can get inside the cluster in a debug mode
