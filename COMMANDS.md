@@ -214,9 +214,10 @@ kubectl apply -f bootstrap/root-app.yaml
 
 kubectl port-forward service/argocd-server -n argocd 8081:443
 k port-forward -n istio-system svc/istio-ingressgateway 8080:80
+
 http://localhost:8081 
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-example  admin GH7fQLCrP2O8I98o
+example  admin qh8rAHihSN5lU2Qu
 
 ```
 
