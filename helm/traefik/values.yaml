@@ -1,5 +1,9 @@
 namespace: george-app
 
+# Must match traefik.ingressClass.name and traefik.providers.kubernetesIngress.ingressClass below.
+# Use a distinct name when k3s (or another) Traefik already owns the default IngressClass "traefik".
+ingressClassName: george-traefik
+
 backend:
   service:
     port: 80
@@ -36,7 +40,16 @@ fallback:
 traefik:
   ingressClass:
     enabled: true
-    isDefaultClass: true
+    # Avoid competing with k3s default Traefik; our Ingresses set ingressClassName explicitly.
+    isDefaultClass: false
+    name: george-traefik
+  providers:
+    kubernetesIngress:
+      enabled: true
+      # Only Ingresses with spec.ingressClassName == george-traefik are loaded by *this* Traefik.
+      ingressClass: george-traefik
+    kubernetesCRD:
+      enabled: true
   ports:
     web:
       expose:
@@ -47,8 +60,3 @@ traefik:
   service:
     type: NodePort
     # type: LoadBalancer # Needs METALLB
-  providers:
-    kubernetesIngress:
-      enabled: true
-    kubernetesCRD:
-      enabled: true

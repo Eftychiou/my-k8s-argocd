@@ -1,5 +1,32 @@
-# Fallback Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: george-app
+  namespace: {{ .Values.namespace }}
+  annotations:
+    traefik.ingress.kubernetes.io/router.priority: "100"
+spec:
+  ingressClassName: {{ .Values.ingressClassName | quote }}
+  rules:
+    - host: {{ .Values.edge.host | quote }}
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: {{ .Values.backend.service.port }}
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: {{ .Values.frontend.service.port }}
 {{- if .Values.fallback.enabled }}
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -52,10 +79,6 @@ spec:
     - port: 80
       targetPort: 80
 ---
-{{- end }}
-
-{{- if .Values.fallback.enabled }}
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -64,6 +87,7 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.priority: "1"
 spec:
+  ingressClassName: {{ .Values.ingressClassName | quote }}
   rules:
     - http:
         paths:
@@ -75,31 +99,3 @@ spec:
                 port:
                   number: 80
 {{- end }}
-
-# George App Ingress
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: george-app
-  namespace: {{ .Values.namespace }}
-  annotations:
-    traefik.ingress.kubernetes.io/router.priority: "100"
-spec:
-  rules:
-    - host: {{ .Values.edge.host | quote }}
-      http:
-        paths:
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: backend
-                port:
-                  number: {{ .Values.backend.service.port }}
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: frontend
-                port:
-                  number: {{ .Values.frontend.service.port }}
