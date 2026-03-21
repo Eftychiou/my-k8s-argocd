@@ -1,0 +1,37 @@
+namespace: george-app
+
+backend:
+  service:
+    port: 80
+    targetPort: 5678
+
+frontend:
+  service:
+    port: 80
+    targetPort: 80
+
+# Mirrors helm/istio-gateway/values.yaml: istio.* → edge.* (Traefik entrypoint instead of gateway/portName)
+edge:
+  namespace: traefik
+  host: george.com
+  entryPoint: web
+  port: 80
+  protocol: HTTP
+
+traefik:
+  ingressClass:
+    enabled: true
+    isDefaultClass: true
+  ports:
+    web:
+      expose:
+        default: true
+      exposedPort: 80
+      protocol: TCP
+  service:
+    type: LoadBalancer
+  providers:
+    kubernetesIngress:
+      enabled: true
+    kubernetesCRD:
+      enabled: true
